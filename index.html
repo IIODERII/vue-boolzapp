@@ -24,7 +24,7 @@
             <div class="container h-100">
                 <div class="row h-100 flex-nowrap g-0">
                     <!-- left side -->
-                    <div class="col-12 col-md-4 contact-list">
+                    <div class="col-12 col-md-4 contact-list d-md-block" :class="{'d-none': !viewContacts}">
                         <div class="d-flex h-100 flex-column flex-nowrap">
                             <!-- io -->
                             <div class="w-100 header d-flex justify-content-between align-items-center p-2">
@@ -32,10 +32,10 @@
                                     <img src="img/avatar_io.jpg" alt="my avatar" class="rounded-circle">
                                     <span class="px-1">Oder</span>
                                 </div>
-                                <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
-                                    <li class="px-2"><i class="fa-solid fa-circle-notch"></i></li>
-                                    <li class="px-2"><i class="fa-solid fa-message"></i></li>
-                                    <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                <ul class="d-flex list-unstyled m-0 fs-5">
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-circle-notch"></i></li>
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-message"></i></li>
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>
                                 </ul>
                             </div>
                             <!-- notifiche (azzurro) -->
@@ -60,7 +60,8 @@
                             <!-- contatti -->
                             <div class="w-100 flex-grow-1 overflow-y-auto h-0">
                                 <div class="d-flex align-items-start justify-content-between border-top p-2 ps-3 contact"
-                                    v-for="contact in filteredContacts()" @click="activeContact = contact.id"
+                                    v-for="contact in filteredContacts()"
+                                    @click="activeContact = contact.id , viewContacts = !viewContacts"
                                     :class="{'active' : isActive(contact.id)}">
                                     <div class="d-flex align-items-start">
                                         <img :src="contact.avatar" :alt="contact.name" class="rounded-circle">
@@ -80,14 +81,19 @@
                         </div>
                     </div>
                     <!-- right side -->
-                    <div class="col-12 col-md-8 d-none d-md-block">
+                    <div class="col-12 col-md-8 d-md-block" :class="{'d-none': viewContacts}">
                         <div class="d-flex h-100 align-content-between flex-column">
                             <!-- right header -->
                             <div
                                 class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
                                 <div class="d-flex align-items-center">
+                                    <div class="fs-3 my-light-icons px-2 d-md-none"
+                                        @click="viewContacts = !viewContacts"><i class="fa-solid fa-arrow-left"></i>
+                                    </div>
+
                                     <img :src="contacts[activeIndex].avatar" :alt="contacts[activeIndex].name"
                                         class="rounded-circle">
+
                                     <div class="px-2">
                                         <span class="fw-bold">{{contacts[activeIndex].name}}</span>
                                         <div class="last-acces">
@@ -97,10 +103,10 @@
                                             1].date)}}</div>
                                     </div>
                                 </div>
-                                <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
-                                    <li class="px-2"><i class="fa-solid fa-magnifying-glass"></i></li>
-                                    <li class="px-2"><i class="fa-solid fa-paperclip"></i></li>
-                                    <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                <ul class="d-flex list-unstyled m-0 fs-5">
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-magnifying-glass"></i></li>
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-paperclip"></i></li>
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>
                                 </ul>
                             </div>
                             <!-- messaggi -->

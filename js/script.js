@@ -12,6 +12,7 @@ createApp({
       newMessage: "",
       answers: autoAnswers,
       searchContact: "",
+      viewContacts: true,
     };
   },
   methods: {

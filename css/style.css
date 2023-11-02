@@ -57,7 +57,7 @@ body {
     width: 3em;
 }
 
-.header li:hover {
+.my-light-icons:hover {
     color: var(--my-color-dark-grey);
     cursor: pointer;
     transition: all 0.3s;
