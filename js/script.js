@@ -24,6 +24,22 @@ createApp({
       return id === this.activeContact ? true : false;
     },
 
+    lastMessage(contact) {
+      if (contact.messages.length > 0) {
+        return contact.messages[contact.messages.length - 1].message;
+      } else {
+        return "";
+      }
+    },
+
+    lastDate(contact) {
+      if (contact.messages.length > 0) {
+        return contact.messages[contact.messages.length - 1].date;
+      } else {
+        return "";
+      }
+    },
+
     sendMessage() {
       if (this.newMessage !== "") {
         this.contacts[this.activeIndex].messages.push({
@@ -82,12 +98,8 @@ createApp({
     },
 
     removeMessage(i) {
-      if (this.contacts[this.activeIndex].messages.length > 1) {
-        this.contacts[this.activeIndex].messages.splice(i, 1);
-        this.toggleMenu(i);
-      } else {
-        alert("Non puoi lasciare una chat vuota");
-      }
+      this.contacts[this.activeIndex].messages.splice(i, 1);
+      this.toggleMenu(i);
     },
   },
   computed: {

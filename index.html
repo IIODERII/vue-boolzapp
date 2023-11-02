@@ -70,14 +70,12 @@
                                         <img :src="contact.avatar" :alt="contact.name" class="rounded-circle">
                                         <div class="px-2 overflow-hidden anteprima">
                                             <span class="fw-bold">{{contact.name}}</span>
-                                            <div class="small-text">{{contact.messages[contact.messages.length -
-                                                1].message}}
+                                            <div class="small-text">{{lastMessage(contact)}}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="small-text">
-                                        {{onlyHour(contact.messages[contact.messages.length -
-                                        1].date)}}
+                                        {{onlyHour(lastDate(contact))}}
                                     </div>
                                 </div>
                             </div>
@@ -119,11 +117,9 @@
 
                                     <div class="px-2">
                                         <span class="fw-bold">{{contacts[activeIndex].name}}</span>
-                                        <div class="last-acces">
+                                        <div class="last-acces" v-if="contacts[activeIndex].messages.length > 0">
                                             Ultimo accesso oggi alle
-                                            {{onlyHour(contacts[activeIndex].messages[contacts[activeIndex].messages.length
-                                            -
-                                            1].date)}}</div>
+                                            {{onlyHour(lastDate(contacts[activeIndex]))}}</div>
                                     </div>
                                 </div>
                                 <ul class="d-flex list-unstyled m-0 fs-5">
