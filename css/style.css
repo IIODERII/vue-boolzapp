@@ -53,10 +53,6 @@ body {
     font-size: 0.8em;
 }
 
-.sent {
-    background-color: var(--my-color-notification);
-}
-
 .header img {
     width: 3em;
 }
@@ -117,4 +113,43 @@ img {
 
 .chat {
     background-image: url('../img/mine.jpg');
+}
+
+.sent {
+    text-align: right;
+    padding: 10px;
+}
+
+.sent div {
+    display: inline-block;
+    background-color: var(--my-color-sent-message);
+    text-align: left;
+    padding: 10px;
+    min-width: 300px;
+    max-width: 700px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.sent div::after {
+    content: "\25B6";
+    position: absolute;
+    right: -0.5em;
+    bottom: -0.2em;
+    color: var(--my-color-sent-message);
+    font-size: 2em;
+}
+
+.recived {
+    text-align: left;
+}
+
+.recived div {
+    display: inline-block;
+    background-color: var(--my-color-white);
+    text-align: left;
+    padding: 10px;
+    min-width: 300px;
+    max-width: 700px;
+    border-radius: 8px;
 }
