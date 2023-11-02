@@ -97,21 +97,33 @@
                 </div>
                 <!-- right side -->
                 <div class="col-12 col-md-8">
-                    <!-- right header -->
-                    <div class="w-100 header d-flex justify-content-between align-items-center p-2">
-                        <div class="d-flex align-items-center">
-                            <img src="img/avatar_1.jpg" alt="my avatar" class="rounded-circle">
-                            <div class="px-2">
-                                <span class="fw-bold">Michele</span>
-                                <div class="last-acces">Ultimo messaggio inviato</div>
+                    <div class="d-flex flex-wrap h-100 align-content-between flex-column">
+                        <!-- right header -->
+                        <div
+                            class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
+                            <div class="d-flex align-items-center">
+                                <img src="img/avatar_1.jpg" alt="my avatar" class="rounded-circle">
+                                <div class="px-2">
+                                    <span class="fw-bold">Michele</span>
+                                    <div class="last-acces">Ultimo messaggio inviato</div>
+                                </div>
                             </div>
+                            <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
+                                <li class="px-2"><i class="fa-solid fa-magnifying-glass"></i></li>
+                                <li class="px-2"><i class="fa-solid fa-paperclip"></i></li>
+                                <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                            </ul>
                         </div>
+                        <!-- messaggi -->
+                        <div class="w-100 flex-grow-1 chat ">
 
-                        <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
-                            <li class="px-2"><i class="fa-solid fa-magnifying-glass"></i></li>
-                            <li class="px-2"><i class="fa-solid fa-paperclip"></i></li>
-                            <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                        </ul>
+                        </div>
+                        <!-- scrivere i messaggi -->
+                        <div class="d-flex w-100 justify-content-evenly align-items-center header py-2">
+                            <div class="my-dark-icons"><i class="fa-regular fa-face-smile"></i></div>
+                            <input type="text" class="w-75 border-0 rounded-2 p-2" placeholder="Scrivi un messaggio">
+                            <div class="my-dark-icons"><i class="fa-solid fa-microphone"></i></div>
+                        </div>
                     </div>
                 </div>
             </div>

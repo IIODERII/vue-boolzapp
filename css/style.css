@@ -37,6 +37,17 @@ body {
     color: var(--my-color-light-icons);
 }
 
+.my-dark-icons {
+    color: var(--my-color-dark-grey);
+    font-size: 1.6em;
+}
+
+.my-dark-icons:hover {
+    color: var(--my-color-dark-text);
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
 .my-text-dark-grey {
     color: var(--my-color-dark-grey);
     font-size: 0.8em;
@@ -102,4 +113,8 @@ img {
 
 .contact:active {
     background-color: var(--my-color-dark-grey);
+}
+
+.chat {
+    background-image: url('../img/mine.jpg');
 }
