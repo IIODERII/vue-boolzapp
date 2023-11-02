@@ -37,6 +37,11 @@ body {
     color: var(--my-color-light-icons);
 }
 
+.my-text-dark-grey {
+    color: var(--my-color-dark-grey);
+    font-size: 0.8em;
+}
+
 .sent {
     background-color: var(--my-color-notification);
 }
@@ -49,4 +54,22 @@ body {
     color: var(--my-color-dark-grey);
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.notifications {
+    background-color: var(--my-color-notification);
+    line-height: 1em;
+
+}
+
+.notifications .bell {
+    color: var(--my-color-notification);
+    background-color: var(--my-color-white);
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
