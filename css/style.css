@@ -253,3 +253,15 @@ img {
     background-color: var(--my-color-dark-grey);
     color: var(--my-color-text-grey);
 }
+
+.my-cross {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-44%);
+    cursor: pointer;
+    color: var(--my-color-text-grey);
+    background-color: var(--my-color-white);
+    padding: 0 1em;
+    z-index: 5000;
+}
