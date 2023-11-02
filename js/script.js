@@ -8,7 +8,7 @@ createApp({
   data() {
     return {
       contacts: contactList,
-      activeContact: 1,
+      activeContact: null,
       newMessage: "",
       answers: autoAnswers,
       searchContact: "",

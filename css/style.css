@@ -248,3 +248,8 @@ img {
 .menu li {
     cursor: pointer;
 }
+
+.default {
+    background-color: var(--my-color-dark-grey);
+    color: var(--my-color-text-grey);
+}

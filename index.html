@@ -82,13 +82,33 @@
                     </div>
                     <!-- right side -->
                     <div class="col-12 col-md-8 d-md-block" :class="{'d-none': viewContacts}">
-                        <div class="d-flex h-100 align-content-between flex-column">
+                        <!-- default screen -->
+                        <div class="w-100 h-100 default" v-if="activeContact === null">
+                            <div
+                                class="d-flex justify-content-center align-content-center align-items-center h-100 flex-column p-5">
+                                <div class="display-1">
+                                    <i class="fa-brands fa-html5 px-2"></i>
+                                    <i class="fa-brands fa-css3-alt px-2"></i>
+                                    <i class="fa-brands fa-square-js px-2"></i>
+                                </div>
+                                <h2 class="fw-bold display-5 pt-3">Boolzapp</h2>
+                                <p class="text-center px-5 fw-bold fs-5">Un posto dove puoi scrivere ed inviare messaggi
+                                    ai
+                                    quali
+                                    riceverai come risposte
+                                    frasi totalmente casuali, provalo e vedrai che possono uscire delle conversazioni
+                                    veramente divertenti!</p>
+                            </div>
+                        </div>
+                        <!-- quando si seleziona un contatto -->
+                        <div class="d-flex h-100 align-content-between flex-column" v-else>
                             <!-- right header -->
                             <div
                                 class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
                                 <div class="d-flex align-items-center">
                                     <div class="fs-3 my-light-icons px-2 d-md-none"
-                                        @click="viewContacts = !viewContacts"><i class="fa-solid fa-arrow-left"></i>
+                                        @click="viewContacts = !viewContacts , activeContact = null"><i
+                                            class="fa-solid fa-arrow-left"></i>
                                     </div>
 
                                     <img :src="contacts[activeIndex].avatar" :alt="contacts[activeIndex].name"
