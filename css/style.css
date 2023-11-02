@@ -89,6 +89,11 @@ img {
     color: var(--my-color-text-grey);
 }
 
+.last-acces {
+    font-size: 0.7em;
+    color: var(--my-color-dark-grey);
+}
+
 .contact:hover {
     background-color: var(--my-color-contact-hover);
     cursor: pointer;
