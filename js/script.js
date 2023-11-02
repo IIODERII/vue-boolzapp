@@ -1,4 +1,6 @@
 import { contactList } from "./data.js";
+import { autoAnswers } from "./data.js";
+import { getRndInteger } from "./utility.js";
 
 const { createApp } = Vue;
 
@@ -6,9 +8,9 @@ createApp({
   data() {
     return {
       contacts: contactList,
-      lastID: 8,
       activeContact: 1,
       newMessage: "",
+      answers: autoAnswers,
     };
   },
   methods: {
@@ -27,6 +29,17 @@ createApp({
         status: "sent",
       });
       this.newMessage = "";
+      setTimeout(() => {
+        this.autoAnswer();
+      }, 1000);
+    },
+
+    autoAnswer() {
+      this.contacts[this.activeIndex].messages.push({
+        date: new Date().toLocaleString(),
+        message: this.answers[getRndInteger(0, this.answers.length - 1)],
+        status: "received",
+      });
     },
   },
   computed: {

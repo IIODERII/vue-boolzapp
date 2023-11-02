@@ -169,3 +169,26 @@ export const contactList = [
     ],
   },
 ];
+
+export const autoAnswers = [
+  "Ciao!",
+  "Ok",
+  "Si!",
+  "certo!",
+  "No!",
+  "Io non c'entro",
+  "Dai può starci",
+  "Scusami",
+  "Non mi interessa",
+  "Skill issue",
+  "Mi dispiace",
+  "Per forza",
+  "Let's go",
+  "Addio",
+  "Non possiamo andare avanti così",
+  "devo dirti una cosa...",
+  "Mi sono scordato scusami",
+  "Non può piovere per sempre",
+  "Io sono tuo padre",
+  "Bazinga",
+];
