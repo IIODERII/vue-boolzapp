@@ -23,15 +23,17 @@ createApp({
     },
 
     sendMessage() {
-      this.contacts[this.activeIndex].messages.push({
-        date: new Date().toLocaleString(),
-        message: this.newMessage,
-        status: "sent",
-      });
-      this.newMessage = "";
-      setTimeout(() => {
-        this.autoAnswer();
-      }, 1000);
+      if (this.newMessage !== "") {
+        this.contacts[this.activeIndex].messages.push({
+          date: new Date().toLocaleString(),
+          message: this.newMessage,
+          status: "sent",
+        });
+        this.newMessage = "";
+        setTimeout(() => {
+          this.autoAnswer();
+        }, 1000);
+      }
     },
 
     autoAnswer() {

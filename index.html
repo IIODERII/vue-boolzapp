@@ -127,7 +127,10 @@
                             <input type="text" class="w-75 border-0 rounded-2 p-2" placeholder="Scrivi un messaggio"
                                 v-model="newMessage" @keyup.enter="sendMessage">
 
-                            <div class="my-dark-icons"><i class="fa-solid fa-microphone"></i></div>
+                            <div class="my-dark-icons" v-if="newMessage === ''"><i class="fa-solid fa-microphone"></i>
+                            </div>
+                            <div class="my-dark-icons send-message" v-else @click="sendMessage"><i
+                                    class="fa-solid fa-paper-plane"></i></div>
                         </div>
                     </div>
                 </div>
