@@ -12,6 +12,7 @@ createApp({
       newMessage: "",
       answers: autoAnswers,
       searchContact: "",
+      showMenu: false,
     };
   },
   methods: {
@@ -63,6 +64,15 @@ createApp({
     scrollDown() {
       const element = document.querySelector(".chat");
       element.scroll({ top: element.scrollHeight, behavior: "smooth" });
+    },
+
+    toggleMenu(i) {
+      const currentMenu = document.getElementsByClassName("menu")[i];
+      currentMenu.classList.toggle("d-none");
+    },
+
+    removeMessage(i) {
+      this.contacts[this.activeIndex].messages.splice(i, 1);
     },
   },
   computed: {

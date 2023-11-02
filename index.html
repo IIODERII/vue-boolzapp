@@ -112,11 +112,21 @@
                         </div>
                         <!-- messaggi -->
                         <div class="w-100 flex-grow-1 chat p-5 overflow-auto">
-                            <div class="text-break" v-for="message in contacts[activeIndex].messages"
+                            <div class="text-break" v-for="(message , index) in contacts[activeIndex].messages"
                                 :class="message.status">
                                 <div>
                                     {{message.message}}
                                     <span>{{onlyHour(message.date)}}</span>
+                                    <div class="arrow" @click="toggleMenu(index)"></div>
+                                    <div class="menu d-none">
+                                        <ul class="list-group list-group-flush rounded-2">
+                                            <li class="list-group-item list-group-item-action">Info messaggio</li>
+                                            <li class="list-group-item list-group-item-action text-danger"
+                                                @click="removeMessage(index)"><i class="fa-solid fa-trash-can"></i>
+                                                Cancella
+                                                messaggio</li>
+                                        </ul>
+                                    </div>
                                 </div>
 
                             </div>
