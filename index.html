@@ -57,14 +57,15 @@
 
                                 <input type="text" class="form-control rounded-0"
                                     placeholder="Cerca o inizia una nuova chat"
-                                    aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping">
+                                    aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping"
+                                    v-model="searchContact">
                             </div>
                         </div>
                         <!-- contatti -->
                         <div class="w-100 flex-grow-1 overflow-y-auto h-0">
 
                             <div class="d-flex align-items-start justify-content-between border-top p-2 ps-3 contact"
-                                v-for="contact in contacts" @click="activeContact = contact.id"
+                                v-for="contact in filteredContacts()" @click="activeContact = contact.id"
                                 :class="{'active' : isActive(contact.id)}">
                                 <div class="d-flex align-items-start">
                                     <img :src="contact.avatar" :alt="contact.name" class="rounded-circle">
@@ -89,7 +90,6 @@
                 <div class="col-12 col-md-8 d-none d-md-block">
                     <div class="d-flex h-100 align-content-between flex-column">
                         <!-- right header -->
-
                         <div
                             class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
                             <div class="d-flex align-items-center">

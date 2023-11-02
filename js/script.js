@@ -11,6 +11,7 @@ createApp({
       activeContact: 1,
       newMessage: "",
       answers: autoAnswers,
+      searchContact: "",
     };
   },
   methods: {
@@ -51,6 +52,12 @@ createApp({
       setTimeout(() => {
         this.scrollDown();
       }, 10);
+    },
+
+    filteredContacts() {
+      return this.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(this.searchContact.toLowerCase())
+      );
     },
 
     scrollDown() {
