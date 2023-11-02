@@ -125,7 +125,7 @@ img {
     display: inline-block;
     background-color: var(--my-color-sent-message);
     text-align: left;
-    padding: 10px;
+    padding: 15px;
     min-width: 300px;
     max-width: 700px;
     border-radius: 8px;
@@ -141,16 +141,35 @@ img {
     font-size: 2em;
 }
 
-.recived {
+.sent div span {
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    font-size: 0.6em;
+    z-index: 10;
+    color: var(--my-color-dark-grey);
+}
+
+.received {
     text-align: left;
 }
 
-.recived div {
+.received div {
     display: inline-block;
     background-color: var(--my-color-white);
     text-align: left;
-    padding: 10px;
+    padding: 15px;
     min-width: 300px;
     max-width: 700px;
     border-radius: 8px;
+    position: relative;
+}
+
+.received div span {
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    font-size: 0.6em;
+    z-index: 10;
+    color: var(--my-color-dark-grey);
 }

@@ -10,6 +10,16 @@ createApp({
       activeContact: 1,
     };
   },
-  methods: {},
-  computed: {},
+  methods: {
+    onlyHour(date) {
+      return date.slice(11, 16);
+    },
+  },
+  computed: {
+    activeIndex() {
+      return this.contacts.findIndex(
+        (contact) => contact.id === this.activeContact
+      );
+    },
+  },
 }).mount("#app");
