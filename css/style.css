@@ -79,3 +79,22 @@ body {
     font-weight: bold;
     background-color: var(--my-color-contact-hover);
 }
+
+img {
+    width: 3.5em;
+}
+
+.small-text {
+    font-size: 0.7em;
+    color: var(--my-color-text-grey);
+}
+
+.contact:hover {
+    background-color: var(--my-color-contact-hover);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.contact:active {
+    background-color: var(--my-color-dark-grey);
+}
