@@ -30,6 +30,11 @@ createApp({
           status: "sent",
         });
         this.newMessage = "";
+
+        setTimeout(() => {
+          this.scrollDown();
+        }, 10);
+
         setTimeout(() => {
           this.autoAnswer();
         }, 1000);
@@ -42,6 +47,15 @@ createApp({
         message: this.answers[getRndInteger(0, this.answers.length - 1)],
         status: "received",
       });
+
+      setTimeout(() => {
+        this.scrollDown();
+      }, 10);
+    },
+
+    scrollDown() {
+      const element = document.querySelector(".chat");
+      element.scroll({ top: element.scrollHeight, behavior: "smooth" });
     },
   },
   computed: {
