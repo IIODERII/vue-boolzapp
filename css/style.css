@@ -109,6 +109,7 @@ img {
 
 .contact:active {
     background-color: var(--my-color-dark-grey);
+    color: var(--my-color-white);
 }
 
 .chat {
