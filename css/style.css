@@ -265,3 +265,25 @@ img {
     padding: 0 1em;
     z-index: 5000;
 }
+
+@media screen and (max-width: 480px) {
+    .text-break>div {
+        min-width: auto;
+    }
+
+    .chat {
+        padding: 0 !important;
+        overflow-x: hidden !important;
+    }
+
+    #app>div,
+    #app>div>div {
+        padding: 0px !important;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .right-side .header ul {
+        display: none !important;
+    }
+}
