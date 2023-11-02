@@ -19,129 +19,121 @@
 
 <body>
 
-    <div id="app" class="w-100 vh-100">
-        <div class="container h-100">
-            <div class="row h-100 flex-nowrap g-0">
-                <!-- left side -->
-                <div class="col-12 col-md-4 contact-list">
-                    <div class="d-flex h-100 flex-column flex-nowrap">
-
-                        <!-- io -->
-                        <div class="w-100 header d-flex justify-content-between align-items-center p-2">
-                            <div class="d-flex align-items-center">
-                                <img src="img/avatar_io.jpg" alt="my avatar" class="rounded-circle">
-                                <span class="px-1">Oder</span>
+    <div id="app">
+        <div class="w-100 vh-100" @click="removeMenu">
+            <div class="container h-100">
+                <div class="row h-100 flex-nowrap g-0">
+                    <!-- left side -->
+                    <div class="col-12 col-md-4 contact-list">
+                        <div class="d-flex h-100 flex-column flex-nowrap">
+                            <!-- io -->
+                            <div class="w-100 header d-flex justify-content-between align-items-center p-2">
+                                <div class="d-flex align-items-center">
+                                    <img src="img/avatar_io.jpg" alt="my avatar" class="rounded-circle">
+                                    <span class="px-1">Oder</span>
+                                </div>
+                                <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
+                                    <li class="px-2"><i class="fa-solid fa-circle-notch"></i></li>
+                                    <li class="px-2"><i class="fa-solid fa-message"></i></li>
+                                    <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                </ul>
                             </div>
-
-                            <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
-                                <li class="px-2"><i class="fa-solid fa-circle-notch"></i></li>
-                                <li class="px-2"><i class="fa-solid fa-message"></i></li>
-                                <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                            </ul>
-                        </div>
-                        <!-- notifiche (azzurro) -->
-                        <div class="w-100 notifications d-flex justify-content-start align-items-center p-3">
-
-                            <div class="bell"><i class="fa-solid fa-bell-slash"></i></div>
-
-                            <div class="px-2">
-                                <div class="fw-bold">Ricevi notifiche di nuovi messaggi</div>
-                                <a class="my-text-dark-grey" href="#">Attiva notifiche desktop</a>
+                            <!-- notifiche (azzurro) -->
+                            <div class="w-100 notifications d-flex justify-content-start align-items-center p-3">
+                                <div class="bell"><i class="fa-solid fa-bell-slash"></i></div>
+                                <div class="px-2">
+                                    <div class="fw-bold">Ricevi notifiche di nuovi messaggi</div>
+                                    <a class="my-text-dark-grey" href="#">Attiva notifiche desktop</a>
+                                </div>
+                            </div>
+                            <!-- searchbar -->
+                            <div class="w-100 search p-2">
+                                <div class="input-group flex-nowrap">
+                                    <span class="input-group-text rounded-0 bg-white my-light-icons px-4"
+                                        id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                    <input type="text" class="form-control rounded-0"
+                                        placeholder="Cerca o inizia una nuova chat"
+                                        aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping"
+                                        v-model="searchContact">
+                                </div>
+                            </div>
+                            <!-- contatti -->
+                            <div class="w-100 flex-grow-1 overflow-y-auto h-0">
+                                <div class="d-flex align-items-start justify-content-between border-top p-2 ps-3 contact"
+                                    v-for="contact in filteredContacts()" @click="activeContact = contact.id"
+                                    :class="{'active' : isActive(contact.id)}">
+                                    <div class="d-flex align-items-start">
+                                        <img :src="contact.avatar" :alt="contact.name" class="rounded-circle">
+                                        <div class="px-2 overflow-hidden anteprima">
+                                            <span class="fw-bold">{{contact.name}}</span>
+                                            <div class="small-text">{{contact.messages[contact.messages.length -
+                                                1].message}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="small-text">
+                                        {{onlyHour(contact.messages[contact.messages.length -
+                                        1].date)}}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- searchbar -->
-                        <div class="w-100 search p-2">
-                            <div class="input-group flex-nowrap">
-                                <span class="input-group-text rounded-0 bg-white my-light-icons px-4"
-                                    id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
-
-                                <input type="text" class="form-control rounded-0"
-                                    placeholder="Cerca o inizia una nuova chat"
-                                    aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping"
-                                    v-model="searchContact">
+                    </div>
+                    <!-- right side -->
+                    <div class="col-12 col-md-8 d-none d-md-block">
+                        <div class="d-flex h-100 align-content-between flex-column">
+                            <!-- right header -->
+                            <div
+                                class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
+                                <div class="d-flex align-items-center">
+                                    <img :src="contacts[activeIndex].avatar" :alt="contacts[activeIndex].name"
+                                        class="rounded-circle">
+                                    <div class="px-2">
+                                        <span class="fw-bold">{{contacts[activeIndex].name}}</span>
+                                        <div class="last-acces">
+                                            Ultimo accesso oggi alle
+                                            {{onlyHour(contacts[activeIndex].messages[contacts[activeIndex].messages.length
+                                            -
+                                            1].date)}}</div>
+                                    </div>
+                                </div>
+                                <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
+                                    <li class="px-2"><i class="fa-solid fa-magnifying-glass"></i></li>
+                                    <li class="px-2"><i class="fa-solid fa-paperclip"></i></li>
+                                    <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                </ul>
                             </div>
-                        </div>
-                        <!-- contatti -->
-                        <div class="w-100 flex-grow-1 overflow-y-auto h-0">
-
-                            <div class="d-flex align-items-start justify-content-between border-top p-2 ps-3 contact"
-                                v-for="contact in filteredContacts()" @click="activeContact = contact.id"
-                                :class="{'active' : isActive(contact.id)}">
-                                <div class="d-flex align-items-start">
-                                    <img :src="contact.avatar" :alt="contact.name" class="rounded-circle">
-                                    <div class="px-2 overflow-hidden anteprima">
-                                        <span class="fw-bold">{{contact.name}}</span>
-                                        <div class="small-text">{{contact.messages[contact.messages.length -
-                                            1].message}}
+                            <!-- messaggi -->
+                            <div class="w-100 flex-grow-1 chat p-5 overflow-auto">
+                                <div class="text-break" v-if="contacts[activeIndex].messages.length > 0"
+                                    v-for="(message , index) in contacts[activeIndex].messages" :class="message.status">
+                                    <div>
+                                        {{message.message}}
+                                        <span>{{onlyHour(message.date)}}</span>
+                                        <div class="arrow" @click.stop="toggleMenu(index)"></div>
+                                        <div class="menu d-none">
+                                            <ul class="list-group list-group-flush rounded-2">
+                                                <li class="list-group-item list-group-item-action">Info messaggio</li>
+                                                <li class="list-group-item list-group-item-action text-danger"
+                                                    @click="removeMessage(index)"><i class="fa-solid fa-trash-can"></i>
+                                                    Cancella
+                                                    messaggio</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="small-text">
-                                    {{onlyHour(contact.messages[contact.messages.length -
-                                    1].date)}}
+                            </div>
+                            <!-- scrivere i messaggi -->
+                            <div class="d-flex w-100 justify-content-evenly align-items-center header py-2">
+                                <div class="my-dark-icons"><i class="fa-regular fa-face-smile"></i></div>
+                                <input type="text" class="w-75 border-0 rounded-2 p-2" placeholder="Scrivi un messaggio"
+                                    v-model="newMessage" @keyup.enter="sendMessage">
+                                <div class="my-dark-icons" v-if="newMessage === ''"><i
+                                        class="fa-solid fa-microphone"></i>
                                 </div>
+                                <div class="my-dark-icons send-message" v-else @click="sendMessage"><i
+                                        class="fa-solid fa-paper-plane"></i></div>
                             </div>
-
-                        </div>
-                    </div>
-                </div>
-                <!-- right side -->
-                <div class="col-12 col-md-8 d-none d-md-block">
-                    <div class="d-flex h-100 align-content-between flex-column">
-                        <!-- right header -->
-                        <div
-                            class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
-                            <div class="d-flex align-items-center">
-                                <img :src="contacts[activeIndex].avatar" :alt="contacts[activeIndex].name"
-                                    class="rounded-circle">
-                                <div class="px-2">
-                                    <span class="fw-bold">{{contacts[activeIndex].name}}</span>
-                                    <div class="last-acces">
-                                        Ultimo accesso oggi alle
-                                        {{onlyHour(contacts[activeIndex].messages[contacts[activeIndex].messages.length
-                                        -
-                                        1].date)}}</div>
-                                </div>
-                            </div>
-                            <ul class="d-flex list-unstyled m-0 fs-5 my-light-icons">
-                                <li class="px-2"><i class="fa-solid fa-magnifying-glass"></i></li>
-                                <li class="px-2"><i class="fa-solid fa-paperclip"></i></li>
-                                <li class="px-2"><i class="fa-solid fa-ellipsis-vertical"></i></li>
-                            </ul>
-                        </div>
-                        <!-- messaggi -->
-                        <div class="w-100 flex-grow-1 chat p-5 overflow-auto">
-                            <div class="text-break" v-if="contacts[activeIndex].messages.length > 0"
-                                v-for="(message , index) in contacts[activeIndex].messages" :class="message.status">
-                                <div>
-                                    {{message.message}}
-                                    <span>{{onlyHour(message.date)}}</span>
-                                    <div class="arrow" @click="toggleMenu(index)"></div>
-                                    <div class="menu d-none">
-                                        <ul class="list-group list-group-flush rounded-2">
-                                            <li class="list-group-item list-group-item-action">Info messaggio</li>
-                                            <li class="list-group-item list-group-item-action text-danger"
-                                                @click="removeMessage(index)"><i class="fa-solid fa-trash-can"></i>
-                                                Cancella
-                                                messaggio</li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- scrivere i messaggi -->
-                        <div class="d-flex w-100 justify-content-evenly align-items-center header py-2">
-                            <div class="my-dark-icons"><i class="fa-regular fa-face-smile"></i></div>
-
-                            <input type="text" class="w-75 border-0 rounded-2 p-2" placeholder="Scrivi un messaggio"
-                                v-model="newMessage" @keyup.enter="sendMessage">
-
-                            <div class="my-dark-icons" v-if="newMessage === ''"><i class="fa-solid fa-microphone"></i>
-                            </div>
-                            <div class="my-dark-icons send-message" v-else @click="sendMessage"><i
-                                    class="fa-solid fa-paper-plane"></i></div>
                         </div>
                     </div>
                 </div>

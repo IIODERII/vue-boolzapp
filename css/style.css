@@ -15,7 +15,7 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
-#app {
+#app>div {
     background: var(--my-bg-color);
     background-repeat: no-repeat;
     padding: 30px;

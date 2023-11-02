@@ -66,8 +66,18 @@ createApp({
     },
 
     toggleMenu(i) {
-      const currentMenu = document.getElementsByClassName("menu")[i];
-      currentMenu.classList.toggle("d-none");
+      const currentMenu = document.getElementsByClassName("menu");
+      for (let c = 0; c < currentMenu.length; c++) {
+        currentMenu[c].classList.add("d-none");
+      }
+      currentMenu[i].classList.toggle("d-none");
+    },
+
+    removeMenu() {
+      const currentMenu = document.getElementsByClassName("menu");
+      for (let c = 0; c < currentMenu.length; c++) {
+        currentMenu[c].classList.add("d-none");
+      }
     },
 
     removeMessage(i) {
