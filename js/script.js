@@ -12,7 +12,6 @@ createApp({
       newMessage: "",
       answers: autoAnswers,
       searchContact: "",
-      showMenu: false,
     };
   },
   methods: {
@@ -72,7 +71,12 @@ createApp({
     },
 
     removeMessage(i) {
-      this.contacts[this.activeIndex].messages.splice(i, 1);
+      if (this.contacts[this.activeIndex].messages.length > 1) {
+        this.contacts[this.activeIndex].messages.splice(i, 1);
+        this.toggleMenu(i);
+      } else {
+        alert("Non puoi lasciare una chat vuota");
+      }
     },
   },
   computed: {

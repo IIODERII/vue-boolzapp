@@ -112,8 +112,8 @@
                         </div>
                         <!-- messaggi -->
                         <div class="w-100 flex-grow-1 chat p-5 overflow-auto">
-                            <div class="text-break" v-for="(message , index) in contacts[activeIndex].messages"
-                                :class="message.status">
+                            <div class="text-break" v-if="contacts[activeIndex].messages.length > 0"
+                                v-for="(message , index) in contacts[activeIndex].messages" :class="message.status">
                                 <div>
                                     {{message.message}}
                                     <span>{{onlyHour(message.date)}}</span>
