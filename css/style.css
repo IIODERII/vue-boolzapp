@@ -1,0 +1,38 @@
+:root {
+    --my-color-white: #ffffff;
+    --my-color-dark-text: #161012;
+    --my-color-dark-grey: #6b7376;
+    --my-color-text-grey: #b6bbc1;
+    --my-color-headers: #eaeaea;
+    --my-color-contact-hover: #e9ebeb;
+    --my-color-light-icons: #b1b1b1;
+    --my-color-sent-message: #d5f9ba;
+    --my-color-notification: #8edafc;
+    --my-bg-color: linear-gradient(180deg, #009688 18.50%, #DBDBD3 18.50%);
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+#app {
+    background: var(--my-bg-color);
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+.contact-list {
+    background-color: var(--my-color-white);
+}
+
+.header {
+    background-color: var(--my-color-headers);
+}
+
+.h-0 {
+    height: 0;
+}
+
+.sent {
+    background-color: var(--my-color-notification);
+}
