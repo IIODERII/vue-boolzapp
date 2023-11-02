@@ -33,6 +33,20 @@ body {
     height: 0;
 }
 
+.my-light-icons {
+    color: var(--my-color-light-icons);
+}
+
 .sent {
     background-color: var(--my-color-notification);
+}
+
+.header img {
+    width: 3em;
+}
+
+.header li:hover {
+    color: var(--my-color-dark-grey);
+    cursor: pointer;
+    transition: all 0.3s;
 }
