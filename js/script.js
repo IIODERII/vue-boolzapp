@@ -14,6 +14,9 @@ createApp({
       searchContact: "",
       viewContacts: true,
       userOnline: [],
+      newName: "",
+      newAvatar: "",
+      lastID: 8,
     };
   },
   methods: {
@@ -107,12 +110,15 @@ createApp({
     },
 
     removeDropDown() {
-      const currentMenu = this.$refs.menu;
-      for (let c = 0; c < currentMenu.length; c++) {
-        currentMenu[c].classList.add("d-none");
+      if (this.activeContact !== null) {
+        const currentMenu = this.$refs.menu;
+        for (let c = 0; c < currentMenu.length; c++) {
+          currentMenu[c].classList.add("d-none");
+        }
+
+        const currentDelete = this.$refs.delete;
+        currentDelete.classList.add("d-none");
       }
-      const currentDelete = this.$refs.delete;
-      currentDelete.classList.add("d-none");
     },
 
     removeMessage(i) {
@@ -127,6 +133,41 @@ createApp({
     deleteContact() {
       this.contacts.splice(this.activeIndex, 1);
       this.activeContact = null;
+    },
+
+    addContact() {
+      if (
+        this.newAvatar !== "" &&
+        this.newAvatar.trim().length > 0 &&
+        this.newName !== "" &&
+        this.newName.trim().length > 0
+      ) {
+        this.lastID++;
+        this.contacts.push({
+          id: this.lastID,
+          name: this.newName,
+          avatar: this.newAvatar,
+          messages: [],
+        });
+        this.newName = "";
+        this.newAvatar = "";
+
+        setTimeout(() => {
+          this.activeContact = this.lastID;
+        }, 100);
+
+        this.closePopup();
+      }
+    },
+
+    closePopup() {
+      const popup = this.$refs.popup;
+      popup.classList.add("d-none");
+    },
+
+    openPopup() {
+      const popup = this.$refs.popup;
+      popup.classList.remove("d-none");
     },
   },
   mounted() {

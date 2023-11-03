@@ -21,8 +21,7 @@
 
     <div id="app">
         <div class="w-100 vh-100" @click="removeDropDown()">
-            <div class="splash bg-secondary position-absolute top-0 bottom-0" v-if="activeContact === null"
-                ref="splash">
+            <div class="splash bg-secondary position-absolute top-0 bottom-0" ref="splash">
                 <div
                     class="d-flex justify-content-center align-content-center align-items-center h-100 flex-column p-5">
                     <div class="display-1">
@@ -39,6 +38,27 @@
                         veramente divertenti!</p>
                 </div>
             </div>
+
+            <div class="popup top-50 w-50 text-center d-none" ref="popup">
+                <div>
+                    <span @click="closePopup">&times;</span>
+                    <h2>Aggiungi nuovo contatto</h2>
+                    <div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome nuovo contatto</label>
+                            <input type="text" class="form-control w-75 mx-auto" id="name" v-model="newName">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="img" class="form-label">Immagine nuovo contatto</label>
+                            <input type="text" class="form-control w-75 mx-auto" id="img" v-model="newAvatar">
+                        </div>
+
+                        <button class="btn btn-success mb-3" @click="addContact()">Aggiungi</button>
+                    </div>
+                </div>
+            </div>
+
             <div class="container h-100">
                 <div class="row h-100 flex-nowrap g-0">
                     <!-- left side -->
@@ -50,8 +70,11 @@
                                     <img src="img/avatar_io.jpg" alt="my avatar" class="rounded-circle">
                                     <span class="px-1">Oder</span>
                                 </div>
+
+
                                 <ul class="d-flex list-unstyled m-0 fs-5">
-                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-plus"></i></li>
+                                    <li class="px-2 my-light-icons" @click="openPopup"><i class="fa-solid fa-plus"></i>
+                                    </li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-circle-notch"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-message"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>
@@ -173,8 +196,8 @@
                             </div>
                             <!-- messaggi -->
                             <div class="w-100 flex-grow-1 chat p-5 overflow-auto" ref="chat">
-                                <div class="text-break" v-if="contacts[activeIndex].messages.length > 0"
-                                    v-for="(message , index) in contacts[activeIndex].messages" :class="message.status">
+                                <div class="text-break" v-for="(message , index) in contacts[activeIndex].messages"
+                                    :class="message.status">
                                     <div>
                                         {{message.message}}
                                         <span>{{onlyHour(message.date)}}</span>

@@ -287,6 +287,25 @@ img {
     right: 0;
 }
 
+.popup {
+    display: block;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    position: absolute;
+    background-color: var(--my-color-white);
+    border: 1px solid var(--my-color-dark-text);
+}
+
+.popup span {
+    cursor: pointer;
+    display: inline-block;
+    width: 2em;
+    font-size: 2em;
+    margin: 15px 0 0 85%;
+
+}
+
 @media screen and (max-width: 480px) {
     .text-break>div {
         min-width: auto;
