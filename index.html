@@ -20,7 +20,7 @@
 <body>
 
     <div id="app">
-        <div class="w-100 vh-100" @click="removeDropDown()">
+        <div class="w-100 vh-100" @click="removeDropDown()" :style="'font-size:'+size+'px'">
             <div class="splash bg-secondary position-absolute top-0 bottom-0" ref="splash">
                 <div
                     class="d-flex justify-content-center align-content-center align-items-center h-100 flex-column p-5">
@@ -38,11 +38,11 @@
                         veramente divertenti!</p>
                 </div>
             </div>
-
+            <!-- popup -->
             <div class="popup top-50 w-50 text-center d-none" ref="popup">
                 <div>
                     <span @click="closePopup">&times;</span>
-                    <h2>Aggiungi nuovo contatto</h2>
+                    <h2 class="pb-4">Aggiungi nuovo contatto</h2>
                     <div>
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome nuovo contatto</label>
@@ -73,9 +73,15 @@
 
 
                                 <ul class="d-flex list-unstyled m-0 fs-5">
-                                    <li class="px-2 my-light-icons" @click="openPopup"><i class="fa-solid fa-plus"></i>
+                                    <li class="px-2 my-light-icons" @click.stop="openPopup"><i
+                                            class="fa-solid fa-plus"></i>
                                     </li>
-                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-circle-notch"></i></li>
+                                    <li class="px-2 my-light-icons" @click="size++"><i
+                                            class="fa-solid fa-magnifying-glass-plus"></i>
+                                    </li>
+                                    <li class="px-2 my-light-icons" @click="smaller()"><i
+                                            class="fa-solid fa-magnifying-glass-minus"></i>
+                                    </li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-message"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>
                                 </ul>

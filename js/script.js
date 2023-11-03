@@ -17,6 +17,7 @@ createApp({
       newName: "",
       newAvatar: "",
       lastID: 8,
+      size: 16,
     };
   },
   methods: {
@@ -168,6 +169,12 @@ createApp({
     openPopup() {
       const popup = this.$refs.popup;
       popup.classList.remove("d-none");
+    },
+
+    smaller() {
+      if (this.size > 1) {
+        this.size--;
+      }
     },
   },
   mounted() {
