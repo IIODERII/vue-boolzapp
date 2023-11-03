@@ -76,7 +76,8 @@
                                     </div>
                                     <div class="small-text">
                                         <span v-if="userOnline[index] === 0">{{onlyHour(lastDate(contact))}}</span>
-                                        <span v-if="userOnline[index] === 1">sta scrivendo...</span>
+                                        <span v-if="userOnline[index] === 1" class="text-success">sta
+                                            scrivendo...</span>
                                         <span v-if="userOnline[index] === 2">Online</span>
                                     </div>
                                 </div>
@@ -120,8 +121,14 @@
                                     <div class="px-2">
                                         <span class="fw-bold">{{contacts[activeIndex].name}}</span>
                                         <div class="last-acces" v-if="contacts[activeIndex].messages.length > 0">
-                                            Ultimo accesso oggi alle
-                                            {{onlyHour(lastDate(contacts[activeIndex]))}}</div>
+                                            <span v-if="userOnline[activeIndex] === 0">
+                                                Ultimo accesso oggi alle
+                                                {{onlyHour(lastDate(contacts[activeIndex]))}}
+                                            </span>
+                                            <span v-if="userOnline[activeIndex] === 1" class="text-success">sta
+                                                scrivendo...</span>
+                                            <span v-if="userOnline[activeIndex] === 2">Online</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <ul class="d-flex list-unstyled m-0 fs-5">
