@@ -63,7 +63,7 @@
                             <!-- contatti -->
                             <div class="w-100 flex-grow-1 overflow-y-auto h-0">
                                 <div class="d-flex align-items-start justify-content-between border-top p-2 ps-3 contact"
-                                    v-for="contact in filteredContacts()"
+                                    v-for="(contact , index) in filteredContacts()"
                                     @click="activeContact = contact.id , viewContacts = !viewContacts"
                                     :class="{'active' : isActive(contact.id)}">
                                     <div class="d-flex align-items-start">
@@ -75,7 +75,9 @@
                                         </div>
                                     </div>
                                     <div class="small-text">
-                                        {{onlyHour(lastDate(contact))}}
+                                        <span v-if="userOnline[index] === 0">{{onlyHour(lastDate(contact))}}</span>
+                                        <span v-if="userOnline[index] === 1">sta scrivendo...</span>
+                                        <span v-if="userOnline[index] === 2">Online</span>
                                     </div>
                                 </div>
                             </div>

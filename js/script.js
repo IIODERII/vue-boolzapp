@@ -13,6 +13,7 @@ createApp({
       answers: autoAnswers,
       searchContact: "",
       viewContacts: true,
+      userOnline: [],
     };
   },
   methods: {
@@ -49,6 +50,8 @@ createApp({
         });
         this.newMessage = "";
 
+        this.userOnline[this.activeIndex] = 1;
+
         setTimeout(() => {
           this.scrollDown();
         }, 10);
@@ -65,6 +68,12 @@ createApp({
         message: this.answers[getRndInteger(0, this.answers.length - 1)],
         status: "received",
       });
+
+      this.userOnline[this.activeIndex] = 2;
+
+      setTimeout(() => {
+        this.userOnline[this.activeIndex] = 0;
+      }, 2000);
 
       setTimeout(() => {
         this.scrollDown();
@@ -101,6 +110,11 @@ createApp({
       this.contacts[this.activeIndex].messages.splice(i, 1);
       this.toggleMenu(i);
     },
+  },
+  mounted() {
+    for (let i = 0; i < this.contacts.length; i++) {
+      this.userOnline.push(0);
+    }
   },
   computed: {
     activeIndex() {
