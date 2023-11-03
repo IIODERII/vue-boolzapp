@@ -21,6 +21,24 @@
 
     <div id="app">
         <div class="w-100 vh-100" @click="removeDropDown()">
+            <div class="splash bg-secondary position-absolute top-0 bottom-0" v-if="activeContact === null"
+                ref="splash">
+                <div
+                    class="d-flex justify-content-center align-content-center align-items-center h-100 flex-column p-5">
+                    <div class="display-1">
+                        <i class="fa-brands fa-html5 px-2"></i>
+                        <i class="fa-brands fa-css3-alt px-2"></i>
+                        <i class="fa-brands fa-square-js px-2"></i>
+                    </div>
+                    <h2 class="fw-bold display-5 pt-3">Boolzapp</h2>
+                    <p class="text-center px-5 fw-bold fs-5">Un posto dove puoi scrivere ed inviare messaggi
+                        ai
+                        quali
+                        riceverai come risposte
+                        frasi totalmente casuali, provalo e vedrai che possono uscire delle conversazioni
+                        veramente divertenti!</p>
+                </div>
+            </div>
             <div class="container h-100">
                 <div class="row h-100 flex-nowrap g-0">
                     <!-- left side -->
@@ -33,6 +51,7 @@
                                     <span class="px-1">Oder</span>
                                 </div>
                                 <ul class="d-flex list-unstyled m-0 fs-5">
+                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-plus"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-circle-notch"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-message"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>

@@ -281,6 +281,12 @@ img {
     z-index: 5000;
 }
 
+.splash {
+    z-index: 999999;
+    left: 0;
+    right: 0;
+}
+
 @media screen and (max-width: 480px) {
     .text-break>div {
         min-width: auto;

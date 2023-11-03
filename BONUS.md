@@ -5,6 +5,5 @@ Funzionalità
 
   Grafica
 
-- aggiungere una splash page visibile per 1s all'apertura dell'app
 - aggiungere un'icona per ingrandire o rimpicciolire il font: dovrebbe essere sufficiente aggiungere una classe al wrapper principale
 - aggiungere un'icona per cambiare la modalità light/dark: dovrebbe essere sufficiente aggiungere una classe al wrapper principale

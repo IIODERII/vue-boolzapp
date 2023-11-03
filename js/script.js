@@ -133,6 +133,11 @@ createApp({
     for (let i = 0; i < this.contacts.length; i++) {
       this.userOnline.push(0);
     }
+
+    const splash = this.$refs.splash;
+    setTimeout(() => {
+      splash.classList.add("d-none");
+    }, 1000);
   },
   computed: {
     activeIndex() {
