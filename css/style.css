@@ -21,12 +21,24 @@ body {
     padding: 30px;
 }
 
-.contact-list {
+.contact-list-light {
     background-color: var(--my-color-white);
+    color: var(--my-color-dark-text);
 }
 
-.header {
+.contact-list-dark {
+    background-color: var(--my-color-dark-text);
+    color: var(--my-color-white);
+}
+
+.header-light {
     background-color: var(--my-color-headers);
+    color: var(--my-color-dark-text);
+}
+
+.header-dark {
+    background-color: var(--my-color-dark-text);
+    color: var(--my-color-white);
 }
 
 .h-0 {
@@ -37,19 +49,35 @@ body {
     color: var(--my-color-light-icons);
 }
 
-.my-dark-icons {
+.my-dark-icons-light {
     color: var(--my-color-dark-grey);
     font-size: 1.6em;
 }
 
-.my-dark-icons:hover {
+.my-dark-icons-dark {
+    color: var(--my-color-headers);
+    font-size: 1.6em;
+}
+
+.my-dark-icons-light:hover {
     color: var(--my-color-dark-text);
     cursor: pointer;
     transition: all 0.3s linear;
 }
 
-.my-text-dark-grey {
+.my-dark-icons-dark:hover {
+    color: var(--my-color-white);
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.my-text-dark-grey-light {
     color: var(--my-color-dark-grey);
+    font-size: 0.8em;
+}
+
+.my-text-dark-grey-dark {
+    color: var(--my-color-headers);
     font-size: 0.8em;
 }
 
@@ -69,7 +97,7 @@ body {
 
 }
 
-.notifications .bell {
+.notifications .bell-light {
     color: var(--my-color-notification);
     background-color: var(--my-color-white);
     width: 2em;
@@ -81,10 +109,32 @@ body {
     align-items: center;
 }
 
-.search {
+.notifications .bell-dark {
+    color: var(--my-color-notification);
+    background-color: var(--my-color-dark-text);
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    font-size: 1.2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bell-dark+div div {
+    color: var(--my-color-dark-text);
+}
+
+.search-light {
     font-size: 0.8em;
     font-weight: bold;
     background-color: var(--my-color-contact-hover);
+}
+
+.search-dark {
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: var(--my-color-dark-grey);
 }
 
 img {
@@ -96,15 +146,27 @@ img {
     color: var(--my-color-text-grey);
 }
 
-.last-acces {
+.last-acces-light {
     font-size: 0.7em;
     color: var(--my-color-dark-grey);
 }
 
-.contact:hover {
+.last-acces-dark {
+    font-size: 0.7em;
+    color: var(--my-color-headers);
+}
+
+.contact-light:hover {
     background-color: var(--my-color-contact-hover);
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.contact-dark:hover {
+    background-color: var(--my-color-contact-hover);
+    cursor: pointer;
+    transition: all 0.3s;
+    color: var(--my-color-dark-text);
 }
 
 .contact:active {
@@ -155,7 +217,7 @@ img {
     padding: 10px;
 }
 
-.received>div {
+.received>.light {
     display: inline-block;
     background-color: var(--my-color-white);
     text-align: left;
@@ -164,9 +226,22 @@ img {
     max-width: 700px;
     border-radius: 8px;
     position: relative;
+    color: var(--my-color-dark-text);
 }
 
-.received>div span {
+.received>.dark {
+    display: inline-block;
+    background-color: var(--my-color-dark-text);
+    text-align: left;
+    padding: 15px;
+    min-width: 300px;
+    max-width: 700px;
+    border-radius: 8px;
+    position: relative;
+    color: var(--my-color-white)
+}
+
+.received>.light span {
     position: absolute;
     bottom: 3px;
     right: 10px;
@@ -175,9 +250,23 @@ img {
     color: var(--my-color-dark-grey);
 }
 
-.active {
+.received>.dark span {
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+    font-size: 0.6em;
+    z-index: 10;
+    color: var(--my-color-light-icons);
+}
+
+.active-light {
     background-color: var(--my-color-dark-grey);
     color: var(--my-color-white);
+}
+
+.active-dark {
+    background-color: var(--my-color-light-icons);
+    color: var(--my-color-dark-text);
 }
 
 .anteprima {
@@ -188,16 +277,23 @@ img {
     overflow-x: hidden !important;
 }
 
-.active {
-    background-color: var(--my-color-dark-grey);
-}
-
 .active:hover {
     background-color: var(--my-color-dark-grey);
     color: var(--my-color-white);
 }
 
-.send-message {
+.send-message-light {
+    width: 1.8em;
+    height: 1.8em;
+    border-radius: 50%;
+    color: var(--my-color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #005717;
+}
+
+.send-message-dark {
     width: 1.8em;
     height: 1.8em;
     border-radius: 50%;
@@ -218,9 +314,23 @@ img {
     color: var(--my-color-white);
 }
 
-.arrow {
+.arrow-light {
     border-top: 1px solid var(--my-color-dark-grey);
     border-left: 1px solid var(--my-color-dark-grey);
+    transform: rotate(45deg);
+    width: 0.6em;
+    height: 0.6em;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.arrow-dark {
+    border-top: 1px solid var(--my-color-light-icons);
+    border-left: 1px solid var(--my-color-light-icons);
     transform: rotate(45deg);
     width: 0.6em;
     height: 0.6em;
@@ -249,12 +359,21 @@ img {
     cursor: pointer;
 }
 
-.delete {
+.delete-light {
     position: absolute;
-
     top: 110%;
     right: -8px;
     background-color: var(--my-color-white);
+    border-radius: 5px;
+    z-index: 10000;
+    width: 250px;
+}
+
+.delete-dark {
+    position: absolute;
+    top: 110%;
+    right: -8px;
+    background-color: var(--my-color-dark-text);
     border-radius: 5px;
     z-index: 10000;
     width: 250px;
@@ -269,7 +388,7 @@ img {
     color: var(--my-color-text-grey);
 }
 
-.my-cross {
+.my-cross-light {
     position: absolute;
     right: 10px;
     top: 50%;
@@ -281,13 +400,25 @@ img {
     z-index: 5000;
 }
 
+.my-cross-dark {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-44%);
+    cursor: pointer;
+    color: var(--my-color-white);
+    background-color: var(--my-color-dark-text);
+    padding: 0 1em;
+    z-index: 5000;
+}
+
 .splash {
     z-index: 999999;
     left: 0;
     right: 0;
 }
 
-.popup {
+.popup-light {
     display: block;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
@@ -295,9 +426,32 @@ img {
     position: absolute;
     background-color: var(--my-color-white);
     border: 1px solid var(--my-color-dark-text);
+    color: var(--my-color-dark-text);
+    z-index: 9999;
 }
 
-.popup span {
+.popup-dark {
+    display: block;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    top: 50%;
+    position: absolute;
+    background-color: var(--my-color-dark-text);
+    border: 1px solid var(--my-color-white);
+    color: var(--my-color-white);
+    z-index: 9999;
+}
+
+.popup-dark span {
+    cursor: pointer;
+    display: inline-block;
+    width: 2em;
+    font-size: 2em;
+    margin: 15px 0 0 85%;
+
+}
+
+.popup-light span {
     cursor: pointer;
     display: inline-block;
     width: 2em;

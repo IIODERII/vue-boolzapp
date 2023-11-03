@@ -18,6 +18,7 @@ createApp({
       newAvatar: "",
       lastID: 8,
       size: 16,
+      theme: "light",
     };
   },
   methods: {
@@ -175,6 +176,10 @@ createApp({
       if (this.size > 1) {
         this.size--;
       }
+    },
+
+    toggleTheme() {
+      this.theme = this.theme === "dark" ? "light" : "dark";
     },
   },
   mounted() {

@@ -20,8 +20,8 @@
 <body>
 
     <div id="app">
-        <div class="w-100 vh-100" @click="removeDropDown()" :style="'font-size:'+size+'px'">
-            <div class="splash bg-secondary position-absolute top-0 bottom-0" ref="splash">
+        <div class="w-100 vh-100" @click="removeDropDown()" :style="'font-size:'+size+'px'" :data-bs-theme="theme">
+            <div class=" splash bg-secondary position-absolute top-0 bottom-0" ref="splash">
                 <div
                     class="d-flex justify-content-center align-content-center align-items-center h-100 flex-column p-5">
                     <div class="display-1">
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- popup -->
-            <div class="popup top-50 w-50 text-center d-none" ref="popup">
+            <div class="top-50 w-50 text-center d-none" :class="'popup-'+theme" ref="popup">
                 <div>
                     <span @click="closePopup">&times;</span>
                     <h2 class="pb-4">Aggiungi nuovo contatto</h2>
@@ -62,10 +62,12 @@
             <div class="container h-100">
                 <div class="row h-100 flex-nowrap g-0">
                     <!-- left side -->
-                    <div class="col-12 col-md-4 contact-list d-md-block" :class="{'d-none': !viewContacts}">
+                    <div class="col-12 col-md-4 contact-list d-md-block"
+                        :class="{'d-none': !viewContacts} , 'contact-list-'+theme">
                         <div class="d-flex h-100 flex-column flex-nowrap">
                             <!-- io -->
-                            <div class="w-100 header d-flex justify-content-between align-items-center p-2">
+                            <div class="w-100 header d-flex justify-content-between align-items-center p-2"
+                                :class="'header-'+theme">
                                 <div class="d-flex align-items-center">
                                     <img src="img/avatar_io.jpg" alt="my avatar" class="rounded-circle">
                                     <span class="px-1">Oder</span>
@@ -82,38 +84,41 @@
                                     <li class="px-2 my-light-icons" @click="smaller()"><i
                                             class="fa-solid fa-magnifying-glass-minus"></i>
                                     </li>
-                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-message"></i></li>
+                                    <li class="px-2 my-light-icons" v-if="theme=== 'dark'" @click="toggleTheme"><i
+                                            class="fa-solid fa-sun"></i></li>
+                                    <li class="px-2 my-light-icons" v-else><i class="fa-solid fa-moon"
+                                            @click="toggleTheme"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>
                                 </ul>
                             </div>
                             <!-- notifiche (azzurro) -->
                             <div class="w-100 notifications d-flex justify-content-start align-items-center p-3">
-                                <div class="bell"><i class="fa-solid fa-bell-slash"></i></div>
+                                <div class="bell" :class="'bell-'+theme"><i class="fa-solid fa-bell-slash"></i></div>
                                 <div class="px-2">
                                     <div class="fw-bold">Ricevi notifiche di nuovi messaggi</div>
                                     <a class="my-text-dark-grey" href="#">Attiva notifiche desktop</a>
                                 </div>
                             </div>
                             <!-- searchbar -->
-                            <div class="w-100 search p-2">
+                            <div class="w-100 search p-2" :class="'search-'+theme">
                                 <div class="input-group flex-nowrap">
-                                    <span class="input-group-text rounded-0 bg-white my-light-icons px-4"
-                                        id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                                    <span class="input-group-text rounded-0 my-light-icons px-4" id="addon-wrapping"><i
+                                            class="fa-solid fa-magnifying-glass"></i></span>
                                     <input type="text" class="form-control rounded-0"
                                         placeholder="Cerca o inizia una nuova chat"
                                         aria-label="Cerca o inizia una nuova chat" aria-describedby="addon-wrapping"
                                         v-model="searchContact">
-                                    <div class="my-cross" @click="searchContact = ''" v-if="searchContact !== ''"><i
-                                            class="fa-solid fa-xmark"></i>
+                                    <div class="my-cross" @click="searchContact = ''" v-if="searchContact !== ''"
+                                        :class="'my-cross-'+theme"><i class="fa-solid fa-xmark"></i>
                                     </div>
                                 </div>
                             </div>
                             <!-- contatti -->
-                            <div class="w-100 flex-grow-1 overflow-y-auto h-0">
+                            <div class="w-100 flex-grow-1 overflow-y-auto h-0" :class="'contacts'+theme">
                                 <div class="d-flex align-items-start justify-content-between border-top p-2 ps-3 contact"
                                     v-for="(contact , index) in filteredContacts()"
                                     @click="activeContact = contact.id , viewContacts = !viewContacts"
-                                    :class="{'active' : isActive(contact.id)}">
+                                    :class="{'active' : isActive(contact.id)} , 'contact-'+theme">
                                     <div class="d-flex align-items-start">
                                         <img :src="contact.avatar" :alt="contact.name" class="rounded-circle">
                                         <div class="px-2 overflow-hidden anteprima">
@@ -155,8 +160,8 @@
                         <!-- quando si seleziona un contatto -->
                         <div class="d-flex h-100 align-content-between flex-column" v-else>
                             <!-- right header -->
-                            <div
-                                class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2">
+                            <div class="w-100 header d-flex justify-content-between align-items-center p-2 border-start border-2"
+                                :class="'header-'+theme">
                                 <div class="d-flex align-items-center">
                                     <div class="fs-3 my-light-icons px-2 d-md-none"
                                         @click="viewContacts = !viewContacts , activeContact = null"><i
@@ -184,7 +189,7 @@
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-paperclip"></i></li>
                                     <li class="px-2 my-light-icons position-relative" @click.stop="toggleDelete()">
                                         <i class="fa-solid fa-ellipsis-vertical"></i>
-                                        <div class="delete d-none" ref="delete">
+                                        <div class="delete d-none" ref="delete" :class="'delete-'+theme">
                                             <ul class="list-group list-group-flush rounded-2">
                                                 <li class="list-group-item list-group-item-action text-danger"
                                                     @click="emptyChat()">
@@ -204,10 +209,11 @@
                             <div class="w-100 flex-grow-1 chat p-5 overflow-auto" ref="chat">
                                 <div class="text-break" v-for="(message , index) in contacts[activeIndex].messages"
                                     :class="message.status">
-                                    <div>
+                                    <div :class="theme">
                                         {{message.message}}
                                         <span>{{onlyHour(message.date)}}</span>
-                                        <div class="arrow" @click.stop="toggleMenu(index)"></div>
+                                        <div class="arrow" @click.stop="toggleMenu(index)" :class="'arrow-'+theme">
+                                        </div>
                                         <div class="menu d-none" ref="menu">
                                             <ul class="list-group list-group-flush rounded-2">
                                                 <li class="list-group-item list-group-item-action">Info messaggio</li>
@@ -221,14 +227,17 @@
                                 </div>
                             </div>
                             <!-- scrivere i messaggi -->
-                            <div class="d-flex w-100 justify-content-evenly align-items-center header py-2">
-                                <div class="my-dark-icons"><i class="fa-regular fa-face-smile"></i></div>
+                            <div class="d-flex w-100 justify-content-evenly align-items-center header py-2"
+                                :class="'header-'+theme">
+                                <div class="my-dark-icons" :class="'my-dark-icons-'+theme"><i
+                                        class="fa-regular fa-face-smile"></i></div>
                                 <input type="text" class="w-75 border-0 rounded-2 p-2" placeholder="Scrivi un messaggio"
                                     v-model="newMessage" @keyup.enter="sendMessage">
-                                <div class="my-dark-icons" v-if="newMessage === ''"><i
+                                <div class="my-dark-icons" v-if="newMessage === ''" :class="'my-dark-icons-'+theme"><i
                                         class="fa-solid fa-microphone"></i>
                                 </div>
-                                <div class="my-dark-icons send-message" v-else @click="sendMessage"><i
+                                <div class="my-dark-icons send-message" v-else @click="sendMessage"
+                                    :class="'my-dark-icons-'+theme , 'send-message-'+theme"><i
                                         class="fa-solid fa-paper-plane"></i></div>
                             </div>
                         </div>
