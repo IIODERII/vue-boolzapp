@@ -129,14 +129,14 @@
                                 </ul>
                             </div>
                             <!-- messaggi -->
-                            <div class="w-100 flex-grow-1 chat p-5 overflow-auto">
+                            <div class="w-100 flex-grow-1 chat p-5 overflow-auto" ref="chat">
                                 <div class="text-break" v-if="contacts[activeIndex].messages.length > 0"
                                     v-for="(message , index) in contacts[activeIndex].messages" :class="message.status">
                                     <div>
                                         {{message.message}}
                                         <span>{{onlyHour(message.date)}}</span>
                                         <div class="arrow" @click.stop="toggleMenu(index)"></div>
-                                        <div class="menu d-none">
+                                        <div class="menu d-none" ref="menu">
                                             <ul class="list-group list-group-flush rounded-2">
                                                 <li class="list-group-item list-group-item-action">Info messaggio</li>
                                                 <li class="list-group-item list-group-item-action text-danger"

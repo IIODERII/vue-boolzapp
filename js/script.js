@@ -41,7 +41,7 @@ createApp({
     },
 
     sendMessage() {
-      if (this.newMessage !== "") {
+      if (this.newMessage !== "" && this.newMessage.trim().length > 0) {
         this.contacts[this.activeIndex].messages.push({
           date: new Date().toLocaleString(),
           message: this.newMessage,
@@ -78,12 +78,12 @@ createApp({
     },
 
     scrollDown() {
-      const element = document.querySelector(".chat");
+      const element = this.$refs.chat;
       element.scroll({ top: element.scrollHeight, behavior: "smooth" });
     },
 
     toggleMenu(i) {
-      const currentMenu = document.getElementsByClassName("menu");
+      const currentMenu = this.$refs.menu;
       for (let c = 0; c < currentMenu.length; c++) {
         currentMenu[c].classList.add("d-none");
       }
@@ -91,7 +91,7 @@ createApp({
     },
 
     removeMenu() {
-      const currentMenu = document.getElementsByClassName("menu");
+      const currentMenu = this.$refs.menu;
       for (let c = 0; c < currentMenu.length; c++) {
         currentMenu[c].classList.add("d-none");
       }
