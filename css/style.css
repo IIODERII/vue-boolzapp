@@ -249,6 +249,21 @@ img {
     cursor: pointer;
 }
 
+.delete {
+    position: absolute;
+
+    top: 110%;
+    right: -8px;
+    background-color: var(--my-color-white);
+    border-radius: 5px;
+    z-index: 10000;
+    width: 250px;
+}
+
+.delete li {
+    cursor: pointer;
+}
+
 .default {
     background-color: var(--my-color-dark-grey);
     color: var(--my-color-text-grey);

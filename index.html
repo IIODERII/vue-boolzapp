@@ -20,7 +20,7 @@
 <body>
 
     <div id="app">
-        <div class="w-100 vh-100" @click="removeMenu">
+        <div class="w-100 vh-100" @click="removeDropDown()">
             <div class="container h-100">
                 <div class="row h-100 flex-nowrap g-0">
                     <!-- left side -->
@@ -134,7 +134,22 @@
                                 <ul class="d-flex list-unstyled m-0 fs-5">
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-magnifying-glass"></i></li>
                                     <li class="px-2 my-light-icons"><i class="fa-solid fa-paperclip"></i></li>
-                                    <li class="px-2 my-light-icons"><i class="fa-solid fa-ellipsis-vertical"></i></li>
+                                    <li class="px-2 my-light-icons position-relative" @click.stop="toggleDelete()">
+                                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        <div class="delete d-none" ref="delete">
+                                            <ul class="list-group list-group-flush rounded-2">
+                                                <li class="list-group-item list-group-item-action text-danger"
+                                                    @click="emptyChat()">
+                                                    <i class="fa-solid fa-circle-xmark"></i> Cancella
+                                                    chat
+                                                </li>
+                                                <li class="list-group-item list-group-item-action text-danger"
+                                                    @click="deleteContact()"><i class="fa-solid fa-trash-can"></i>
+                                                    Cancella
+                                                    contatto</li>
+                                            </ul>
+                                        </div>
+                                    </li>
                                 </ul>
                             </div>
                             <!-- messaggi -->

@@ -99,16 +99,34 @@ createApp({
       currentMenu[i].classList.toggle("d-none");
     },
 
-    removeMenu() {
+    toggleDelete() {
+      const currentDelete = this.$refs.delete;
+      if (this.activeContact !== null) {
+        currentDelete.classList.toggle("d-none");
+      }
+    },
+
+    removeDropDown() {
       const currentMenu = this.$refs.menu;
       for (let c = 0; c < currentMenu.length; c++) {
         currentMenu[c].classList.add("d-none");
       }
+      const currentDelete = this.$refs.delete;
+      currentDelete.classList.add("d-none");
     },
 
     removeMessage(i) {
       this.contacts[this.activeIndex].messages.splice(i, 1);
       this.toggleMenu(i);
+    },
+
+    emptyChat() {
+      this.contacts[this.activeIndex].messages = [];
+    },
+
+    deleteContact() {
+      this.contacts.splice(this.activeIndex, 1);
+      this.activeContact = null;
     },
   },
   mounted() {
