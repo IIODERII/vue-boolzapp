@@ -20,7 +20,8 @@
 <body>
 
     <div id="app">
-        <div class="w-100 vh-100" @click="removeDropDown()" :style="'font-size:'+size+'px'" :data-bs-theme="theme">
+        <div class="w-100 vh-100" @click="removeDropDown()" :style="'font-size:'+size+'px'" :data-bs-theme="theme"
+            :class="theme">
             <div class=" splash bg-secondary position-absolute top-0 bottom-0" ref="splash">
                 <div
                     class="d-flex justify-content-center align-content-center align-items-center h-100 flex-column p-5">
@@ -206,7 +207,7 @@
                                 </ul>
                             </div>
                             <!-- messaggi -->
-                            <div class="w-100 flex-grow-1 chat p-5 overflow-auto" ref="chat">
+                            <div class="w-100 flex-grow-1 chat p-5 overflow-auto" ref="chat" :class="'chat-'+theme">
                                 <div class="text-break" v-for="(message , index) in contacts[activeIndex].messages"
                                     :class="message.status">
                                     <div :class="theme">

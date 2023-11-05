@@ -55,7 +55,11 @@ createApp({
         });
         this.newMessage = "";
 
-        this.userOnline[this.activeIndex] = 1;
+        this.userOnline[this.activeIndex] = 2;
+
+        setTimeout(() => {
+          this.userOnline[this.activeIndex] = 1;
+        }, 1000);
 
         setTimeout(() => {
           this.scrollDown();
@@ -63,7 +67,7 @@ createApp({
 
         setTimeout(() => {
           this.autoAnswer();
-        }, 1000);
+        }, 2500);
       }
     },
 

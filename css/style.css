@@ -8,15 +8,22 @@
     --my-color-light-icons: #b1b1b1;
     --my-color-sent-message: #d5f9ba;
     --my-color-notification: #8edafc;
-    --my-bg-color: linear-gradient(180deg, #009688 18.50%, #DBDBD3 18.50%);
+    --my-bg-color-light: linear-gradient(180deg, #009688 18.50%, #DBDBD3 18.50%);
+    --my-bg-color-dark: linear-gradient(180deg, #009688 18.50%, #333 18.50%);
 }
 
 body {
     font-family: 'Lato', sans-serif;
 }
 
-#app>div {
-    background: var(--my-bg-color);
+#app>.light {
+    background: var(--my-bg-color-light);
+    background-repeat: no-repeat;
+    padding: 30px;
+}
+
+#app>.dark {
+    background: var(--my-bg-color-dark);
     background-repeat: no-repeat;
     padding: 30px;
 }
@@ -174,8 +181,14 @@ img {
     color: var(--my-color-white);
 }
 
-.chat {
+.chat-light {
     background-image: url('../img/mine.jpg');
+}
+
+.chat-dark {
+    background-image: url('../img/dark.jpg');
+    background-repeat: repeat;
+    background-size: contain;
 }
 
 .sent {
