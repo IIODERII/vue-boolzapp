@@ -272,14 +272,9 @@ img {
     color: var(--my-color-light-icons);
 }
 
-.active-light {
+.active {
     background-color: var(--my-color-dark-grey);
     color: var(--my-color-white);
-}
-
-.active-dark {
-    background-color: var(--my-color-light-icons);
-    color: var(--my-color-dark-text);
 }
 
 .anteprima {
