@@ -63,9 +63,9 @@ createApp({
           this.userOnline[this.activeIndex] = 1;
         }, 1000);
 
-        setTimeout(() => {
+        this.$nextTick(() => {
           this.scrollDown();
-        }, 10);
+        });
 
         setTimeout(() => {
           this.autoAnswer();
@@ -86,9 +86,9 @@ createApp({
         this.userOnline[this.activeIndex] = 0;
       }, 2000);
 
-      setTimeout(() => {
+      this.$nextTick(() => {
         this.scrollDown();
-      }, 10);
+      });
     },
 
     filteredContacts() {
