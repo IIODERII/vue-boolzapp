@@ -507,6 +507,11 @@ img {
     border-radius: 50%;
 }
 
+.searchMessage {
+    right: -10px;
+    top: 0;
+}
+
 @media screen and (max-width: 480px) {
     .text-break>div {
         min-width: auto;

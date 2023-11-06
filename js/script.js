@@ -21,6 +21,7 @@ createApp({
       size: 16,
       theme: "light",
       emojis: emoji,
+      filterMessage: "",
     };
   },
   methods: {
@@ -129,6 +130,10 @@ createApp({
 
         const currentEmoji = this.$refs.emoji;
         currentEmoji.classList.add("d-none");
+
+        const currentSearchMessage = this.$refs.searchMessage;
+        currentSearchMessage.classList.add("d-none");
+        this.filterMessage = "";
       }
     },
 
@@ -200,6 +205,17 @@ createApp({
     toggleEmoji() {
       const currentEmoji = this.$refs.emoji;
       currentEmoji.classList.toggle("d-none");
+    },
+
+    toggleSearchMessage() {
+      const currentSearchMessage = this.$refs.searchMessage;
+      currentSearchMessage.classList.toggle("d-none");
+    },
+
+    filteredMessages() {
+      return this.contacts[this.activeIndex].messages.filter((message) =>
+        message.message.toLowerCase().includes(this.filterMessage.toLowerCase())
+      );
     },
   },
   mounted() {
