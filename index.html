@@ -232,8 +232,10 @@
                                 :class="'header-'+theme">
                                 <div class="my-dark-icons position-relative" :class="'my-dark-icons-'+theme">
                                     <div class="position-absolute emojis row p-2 d-none" :class="'emojis-'+theme"
-                                        ref="emoji">
-                                        <div v-for="emoji in emojis" class="p-2 col-2" @click="newMessage+=emoji">
+                                        ref="emoji" @click.stop>
+                                        <div v-for="emoji in emojis"
+                                            class="p-2 col-2 d-flex justify-content-center align-items-center"
+                                            @click="newMessage+=emoji">
                                             {{emoji}}</div>
                                     </div><i class="fa-regular fa-face-smile" @click.stop="toggleEmoji()">
 

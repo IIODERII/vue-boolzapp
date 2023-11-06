@@ -501,9 +501,15 @@ img {
     height: 200px;
 }
 
+.emojis div {
+    width: 2em;
+    height: 2em;
+}
+
 .emojis div:hover {
     background-color: var(--my-color-dark-grey);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
+    border-radius: 50%;
 }
 
 @media screen and (max-width: 480px) {
