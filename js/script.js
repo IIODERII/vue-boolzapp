@@ -181,8 +181,14 @@ createApp({
       popup.classList.remove("d-none");
     },
 
+    bigger() {
+      if (this.size < 30) {
+        this.size++;
+      }
+    },
+
     smaller() {
-      if (this.size > 1) {
+      if (this.size > 8) {
         this.size--;
       }
     },
