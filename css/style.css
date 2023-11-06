@@ -473,6 +473,39 @@ img {
 
 }
 
+.emojis-light {
+    position: absolute;
+    left: 0;
+    bottom: -110%;
+    transform: translateY(-44%);
+    color: var(--my-color-text-grey);
+    background-color: var(--my-color-white);
+    padding: 0 1em;
+    z-index: 5000;
+    overflow-y: auto;
+    width: 300px;
+    height: 200px;
+}
+
+.emojis-dark {
+    position: absolute;
+    left: -120%;
+    bottom: -110%;
+    transform: translateY(-44%);
+    color: var(--my-color-text-grey);
+    background-color: var(--my-color-dark-text);
+    padding: 0 1em;
+    z-index: 5000;
+    overflow-y: auto;
+    width: 300px;
+    height: 200px;
+}
+
+.emojis div:hover {
+    background-color: var(--my-color-dark-grey);
+    transition: all 0.3s ease;
+}
+
 @media screen and (max-width: 480px) {
     .text-break>div {
         min-width: auto;

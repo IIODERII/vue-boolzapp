@@ -1,5 +1,6 @@
 import { contactList } from "./data.js";
 import { autoAnswers } from "./data.js";
+import { emoji } from "./data.js";
 import { getRndInteger } from "./utility.js";
 
 const { createApp } = Vue;
@@ -19,6 +20,7 @@ createApp({
       lastID: 8,
       size: 16,
       theme: "light",
+      emojis: emoji,
     };
   },
   methods: {
@@ -124,6 +126,9 @@ createApp({
 
         const currentDelete = this.$refs.delete;
         currentDelete.classList.add("d-none");
+
+        const currentEmoji = this.$refs.emoji;
+        currentEmoji.classList.add("d-none");
       }
     },
 
@@ -184,6 +189,11 @@ createApp({
 
     toggleTheme() {
       this.theme = this.theme === "dark" ? "light" : "dark";
+    },
+
+    toggleEmoji() {
+      const currentEmoji = this.$refs.emoji;
+      currentEmoji.classList.toggle("d-none");
     },
   },
   mounted() {

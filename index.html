@@ -230,8 +230,15 @@
                             <!-- scrivere i messaggi -->
                             <div class="d-flex w-100 justify-content-evenly align-items-center header py-2"
                                 :class="'header-'+theme">
-                                <div class="my-dark-icons" :class="'my-dark-icons-'+theme"><i
-                                        class="fa-regular fa-face-smile"></i></div>
+                                <div class="my-dark-icons position-relative" :class="'my-dark-icons-'+theme">
+                                    <div class="position-absolute emojis row p-2 d-none" :class="'emojis-'+theme"
+                                        ref="emoji">
+                                        <div v-for="emoji in emojis" class="p-2 col-2" @click="newMessage+=emoji">
+                                            {{emoji}}</div>
+                                    </div><i class="fa-regular fa-face-smile" @click.stop="toggleEmoji()">
+
+                                    </i>
+                                </div>
                                 <input type="text" class="w-75 border-0 rounded-2 p-2" placeholder="Scrivi un messaggio"
                                     v-model="newMessage" @keyup.enter="sendMessage">
                                 <div class="my-dark-icons" v-if="newMessage === ''" :class="'my-dark-icons-'+theme"><i
